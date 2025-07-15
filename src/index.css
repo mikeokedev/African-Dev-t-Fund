@@ -26,12 +26,63 @@ html {
   font-size: 62.5%;
 }
 
-.registration_container {
-  border-radius: 5px;
-  width: 40rem;
-  height: 52rem;
-  margin: 2rem auto;
+.menu_containerr {
+  z-index: 1000;
+  position: absolute;
+  display: flex;
+  text-align: left;
+  /* padding: 2rem; */
+  width: 80%;
+  gap: 1.2rem;
+  height: 50rem;
+  flex-direction: column;
+  background-color: rgb(220, 160, 81);
+  background-color: rgba(0, 0, 0, 0.99);
+}
+.menu_header {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  padding: 0.5rem 1.2rem;
+  border-bottom: 4px solid rgb(217, 152, 67);
+  left: 0;
+  justify-content: space-between;
+  opacity: 100%;
+  transition: all 2s;
+}
+.menu_header h2 {
+  color: whitesmoke;
+  display: inline;
+}
+.menu_containerr button {
+  margin-left: 2rem;
+  text-align: left;
 
+  color: rgb(217, 152, 67);
+}
+
+.hide_menuside {
+  opacity: 0;
+  transition: all 0.7s;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.menu_display {
+  width: 92%;
+  height: 100%;
+  margin: 1.2rem;
+  background-color: rgb(217, 40, 214);
+  border: 2px solid rgb(217, 152, 67);
+}
+
+/* &&&&&&&&&&&&&&&& */
+.registration_container {
+  border-radius: 10px;
+  width: 37rem;
+  height: 50rem;
+  margin: 4rem auto;
+  padding: 0.5rem 0;
   background-color: rgb(223, 166, 51);
   background-color: rgb(228, 207, 163);
 }
@@ -55,7 +106,7 @@ html {
   border: none;
 }
 
-.regis_form input :focus {
+.regis_form input :active {
   border: none;
 }
 
@@ -120,6 +171,7 @@ html {
 
 .top_nav {
   display: flex;
+  position: relative;
   justify-content: space-between;
   border-bottom: 2px solid black;
   padding: 6px;
@@ -220,6 +272,7 @@ html {
   font-weight: 600;
   /* width: 15rem; */
   margin-top: 1rem;
+  margin-bottom: 4rem;
 }
 
 .custo_container {
@@ -360,6 +413,19 @@ html {
   text-align: center;
   background-color: rgb(12, 171, 12);
   margin: 2rem auto;
+  font-size: 4rem;
+}
+.congra_message a {
+  display: flex;
+  align-items: center;
+  width: 100% !important;
+  margin: 1rem auto;
+  text-align: center;
+  background-color: rgb(12, 171, 12);
+  margin: 2rem auto;
+  padding: 2rem 42%;
+  border-radius: 10px;
+  /* padding-bottom: 4rem; */
   font-size: 4rem;
 }
 

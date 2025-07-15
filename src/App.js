@@ -70,6 +70,7 @@ export default function Prom() {
   const [userIn, setuserIn] = useState(false);
   const [balance, setbBlance] = useState(0);
   const [currency, setcurrency] = useState("");
+  const [menuOpen, setmenuOpen] = useState(false);
 
   function setUserCurrency() {
     console.log(users.country);
@@ -127,12 +128,15 @@ export default function Prom() {
   function handleSetBalance(bal) {
     setbBlance(bal);
   }
+  function onMenuOpen() {
+    setmenuOpen(menuOpen === false ? true : false);
+  }
 
   return (
     <div className="prom-container">
       <div>
         <div className="top_nav">
-          <button className="nav_btn">
+          <button onClick={onMenuOpen} className="nav_btn">
             <ion-icon name="menu-outline"></ion-icon>
           </button>
 
@@ -140,6 +144,7 @@ export default function Prom() {
             {" "}
             <ion-icon name="person-outline"></ion-icon> <span>Account</span>
           </button>
+          <MenuSide menuOpen={menuOpen} onsetmenu={onMenuOpen} />
         </div>
         <Promlogo userIn={userIn} />
         <div className="header">
@@ -189,7 +194,35 @@ export default function Prom() {
       >
         <Quizes />
       </LandingPage>
+      {/* <MenuSide menuOpen={menuOpen} /> */}
     </div>
+  );
+}
+
+function MenuSide({ menuOpen, onsetmenu }) {
+  return (
+    <>
+      <div className={`menu_containerr ${menuOpen ? "" : "hide_menuside"}`}>
+        <div className="menu_header">
+          <h2>DASHBORD</h2>
+          <button onClick={onsetmenu}>
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </button>
+        </div>
+        <button>
+          Profile <ion-icon name="person-circle-outline"></ion-icon>
+        </button>
+        <button>
+          Help <ion-icon name="help-circle-outline"></ion-icon>
+        </button>
+        <button>Rate us ⭐</button>
+        <button>About us</button>
+        <button>
+          Invite People <ion-icon name="people-outline"></ion-icon>
+        </button>
+        <div className="menu_display"></div>
+      </div>
+    </>
   );
 }
 
@@ -295,7 +328,9 @@ function Form({
   return (
     <>
       <form className="regis_form" onSubmit={handleOnsubmit}>
-        <label>Your Name</label>
+        <label>
+          Name <span> (Two)</span>
+        </label>
         <input
           type="text"
           value={name}
@@ -322,7 +357,7 @@ function Form({
         />
         <p className={`error_p ${noData ? "" : "err"}`}>Email valid email</p>
 
-        {userPhoneNum.length > 1 && userPhoneNum.length < 11 ? (
+        {/* {userPhoneNum.length > 1 && userPhoneNum.length < 11 ? (
           <p className="error_p">invalid phone number</p>
         ) : (
           <p className={`error_p ${noNumber ? "" : "err"}`}>
@@ -330,7 +365,7 @@ function Form({
               ? "invalid phone number"
               : " phone number is required"}
           </p>
-        )}
+        )} */}
         <label>Password </label>
         <input
           type="password"
@@ -343,6 +378,7 @@ function Form({
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         >
+          <option>Choose Your Country</option>
           <option value="Zambia">Zambia</option>
           <option value="Kenya">Kenya</option>
           <option value="Tanzania">Tanzania</option>
@@ -392,10 +428,10 @@ function LandingPage({
               <p>
                 Your have been reqistered <strong>successfully</strong> in our
                 funding Programme. Now you are required to answer few
-                questions,and at the end you are required to choose the amount
-                of Funds that you need, Thank You.
+                questions,and at the end you are also required to choose the
+                amount of Funds that you need, Thank You.
               </p>
-              <button onClick={onlandd}>Start Questions</button>
+              <button onClick={onlandd}> CONTINUE</button>
             </>
           ) : (
             <>

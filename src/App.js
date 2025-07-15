@@ -401,7 +401,7 @@ function LandingPage({
   onSetbalance,
   currency,
 }) {
-  const { name, age, country } = custoName;
+  const { name, country } = custoName;
   const [Finish, setFinish] = useState(false);
   function onFinish() {
     setFinish(true);

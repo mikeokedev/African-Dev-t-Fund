@@ -4,7 +4,7 @@ import { useEffect, useReducer, useState } from "react";
 const questions = [
   {
     quiz: "Which line are you using in this Application",
-    option: ["1.MTN", "2.AIRTEL", "Tigo", "Safaricom"],
+    option: ["1.MTN", "2.AIRTEL", "Tigo", "Safaricom", "Vodacom", "Zamtel"],
     id: 1,
   },
 
@@ -69,12 +69,12 @@ export default function Prom() {
   const [users, setUsers] = useState({});
   const [userIn, setuserIn] = useState(false);
   const [balance, setbBlance] = useState(0);
+  const [activate, setActivation] = useState(0);
   const [currency, setcurrency] = useState("");
   const [menuOpen, setmenuOpen] = useState(false);
 
   function setUserCurrency() {
     console.log(users.country);
-    // if (users.country !== "" && users.country !== null) {
     switch (users.country) {
       case "Zambia": {
         return setcurrency("ZMW");
@@ -125,8 +125,9 @@ export default function Prom() {
   function onuserIn() {
     setuserIn(true);
   }
-  function handleSetBalance(bal) {
+  function handleSetBalance(bal, acti) {
     setbBlance(bal);
+    setActivation(acti);
   }
   function onMenuOpen() {
     setmenuOpen(menuOpen === false ? true : false);
@@ -144,7 +145,7 @@ export default function Prom() {
             {" "}
             <ion-icon name="person-outline"></ion-icon> <span>Account</span>
           </button>
-          <MenuSide menuOpen={menuOpen} onsetmenu={onMenuOpen} />
+          <MenuSide menuOpen={menuOpen} user={users} onsetmenu={onMenuOpen} />
         </div>
         <Promlogo userIn={userIn} />
         <div className="header">
@@ -189,6 +190,7 @@ export default function Prom() {
         onlandd={handleLand}
         custoName={users}
         balance={balance}
+        activate={activate}
         setUserCurrency={setUserCurrency}
         onSetbalance={handleSetBalance}
       >
@@ -199,7 +201,19 @@ export default function Prom() {
   );
 }
 
-function MenuSide({ menuOpen, onsetmenu }) {
+function MenuSide({ user, menuOpen, onsetmenu }) {
+  const { country, age, name, userPhoneNum, userEmail } = user;
+  const [profi, setProfi] = useState(false);
+  const [help, setHelp] = useState(false);
+
+  function hndleProfi() {
+    setProfi(true);
+    setHelp(false);
+  }
+  function hndleHelp() {
+    setHelp(true);
+    setProfi(false);
+  }
   return (
     <>
       <div className={`menu_containerr ${menuOpen ? "" : "hide_menuside"}`}>
@@ -209,10 +223,10 @@ function MenuSide({ menuOpen, onsetmenu }) {
             <ion-icon name="close-circle-outline"></ion-icon>
           </button>
         </div>
-        <button>
+        <button onClick={hndleProfi}>
           Profile <ion-icon name="person-circle-outline"></ion-icon>
         </button>
-        <button>
+        <button onClick={hndleHelp}>
           Help <ion-icon name="help-circle-outline"></ion-icon>
         </button>
         <button>Rate us ⭐</button>
@@ -220,7 +234,57 @@ function MenuSide({ menuOpen, onsetmenu }) {
         <button>
           Invite People <ion-icon name="people-outline"></ion-icon>
         </button>
-        <div className="menu_display"></div>
+        <div className="menu_display">
+          {profi ? (
+            <>
+              {user.name !== undefined ? (
+                <div className="plofile_info">
+                  <h2>
+                    <strong>Name</strong>: {name}
+                  </h2>
+                  <p>
+                    <strong>Age</strong>: {age} years
+                  </p>
+                  <p>
+                    <strong>Number</strong>: {userPhoneNum}
+                  </p>
+                  <p>
+                    <strong>Email</strong>: {userEmail}
+                  </p>
+                  <p>
+                    <strong>Country</strong>: {country}
+                  </p>
+                </div>
+              ) : (
+                <h1
+                  style={{
+                    width: "fit-content",
+                    margin: "auto auto",
+                    textAlign: "center",
+                  }}
+                >
+                  Login or Create Account
+                </h1>
+              )}
+            </>
+          ) : (
+            ""
+          )}
+
+          {help ? (
+            <div>
+              <a
+                href="https://api.whatsapp.com/send?phone=254735011774&text=Hello!%20I'd%20like%20your%20PROMOTION"
+                className="whatsapp"
+              >
+                WHATSAPP
+                {/* <ion-icon name="logo-whatsapp"></ion-icon> */}
+              </a>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   );
@@ -400,6 +464,7 @@ function LandingPage({
   balance,
   onSetbalance,
   currency,
+  activate,
 }) {
   const { name, country } = custoName;
   const [Finish, setFinish] = useState(false);
@@ -443,6 +508,7 @@ function LandingPage({
                 />
               ) : (
                 <CongratsMessage
+                  activate={activate}
                   currency={currency}
                   balance={balance}
                   custoName={custoName}
@@ -459,8 +525,6 @@ function LandingPage({
 }
 
 function ProfileCusto({ name, country, balance, currency }) {
-  console.log(balance);
-
   return (
     <div className="Userin">
       <div className="custo_container">
@@ -492,13 +556,13 @@ function ProfileCusto({ name, country, balance, currency }) {
   );
 }
 
-function CongratsMessage({ balance, currency, custoName }) {
+function CongratsMessage({ balance, currency, custoName, activate }) {
   const { name, age, userEmail, userPhoneNum, country } = custoName;
   return (
     <div className="congra_message">
       <h2> Congratulations For Reaching the last Step</h2>
-      <p>
-        <p className="userdetails">
+      <div>
+        <div className="userdetails">
           <p>
             {" "}
             NAME: <strong>{name}.</strong>
@@ -519,7 +583,7 @@ function CongratsMessage({ balance, currency, custoName }) {
               {currency} {balance}.
             </strong>
           </p>
-        </p>
+        </div>
         <p>
           You are now registered as a permanent beneficiary of AFRICAN
           DEVELOPMENT BANK. ✅ You are about to receive {currency} {balance}{" "}
@@ -530,16 +594,19 @@ function CongratsMessage({ balance, currency, custoName }) {
         <p className="askmoney_p">
           {" "}
           <strong>
-            📌Now you are required pay {currency} {22} for activation fee and
-            immediately receive Activation code to unlock your promotion Awards
-            Funds
+            📌Now you are required pay{" "}
+            <strong>
+              {currency} {activate}
+            </strong>{" "}
+            for activation fee and immediately receive Activation code to unlock
+            your promotion Awards Funds
           </strong>
         </p>{" "}
         𝕔𝕠𝕟𝕘𝕣𝕒𝕥𝕦𝕝𝕒𝕥𝕚𝕠𝕟 🎁To continue click the whatsapp link below to reach to
         agent on whatApp who will guide on how to activate your Awards within 10
         MINUTES. Your promotion is to be dispersed to your line within 5 minutes
         after Activation.
-      </p>
+      </div>
       <p>
         <strong>
           NOW COPY/SCREENSHOT THIS CONGRATULATION MESSAGE AND SEND IT TO US ON
@@ -558,6 +625,7 @@ function CongratsMessage({ balance, currency, custoName }) {
 
 function Quizes({ balance, onSetbalance, onFinish }) {
   const [currentId, setCurrentId] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [price, setprice] = useState(false);
 
   const selected = {
@@ -576,7 +644,12 @@ function Quizes({ balance, onSetbalance, onFinish }) {
 
   function handleCurrentID() {
     setCurrentId(currentId + 1);
+    setSelectedIndex(null);
   }
+  function handleSelected(index) {
+    setSelectedIndex(index);
+  }
+
   return (
     <div className="myQuizes">
       {!price ? (
@@ -585,8 +658,16 @@ function Quizes({ balance, onSetbalance, onFinish }) {
             quiz.id === currentId ? (
               <div key={quiz.id}>
                 <h4>{quiz.quiz}</h4>
-                {quiz.option.map((opt) => (
-                  <button>{opt}</button>
+                {quiz.option.map((opt, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSelected(index)}
+                    className={` ${
+                      selectedIndex === index ? "select_btn" : ""
+                    }`}
+                  >
+                    {opt}
+                  </button>
                 ))}
               </div>
             ) : (
@@ -596,6 +677,7 @@ function Quizes({ balance, onSetbalance, onFinish }) {
           <button
             onClick={handleCurrentID}
             className="btn_next"
+            disabled={!selectedIndex}
             style={{
               backgroundColor: "rgb(11, 11, 45)",
               color: "white",
@@ -613,11 +695,12 @@ function Quizes({ balance, onSetbalance, onFinish }) {
           {moneyoption.map((quiz) => (
             <div key={quiz.id}>
               <h4>{quiz.quiz}</h4>
-              {quiz.option.map((opt) => (
+              {quiz.option.map((opt, index) => (
                 <button
-                  onClick={(e) => onSetbalance(e.target.value)}
+                  key={index}
+                  onClick={(e) => onSetbalance(e.target.value, opt.activation)}
                   value={opt.amount}
-                  className={balance === opt.amount ? selected : ""}
+                  className={`${balance === opt.amount ? "selected" : ""}`}
                 >
                   {opt.type}
                 </button>

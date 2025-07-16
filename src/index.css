@@ -4,6 +4,7 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
 .menu {
   display: flex;
   flex-direction: column;
@@ -16,6 +17,22 @@
   border: none;
   font-weight: 550;
   background-color: inherit;
+}
+
+.plofile_info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.plofile_info h2 {
+  font-size: 2.2rem;
+}
+.plofile_info p {
+  font-size: 1.8rem;
 }
 
 body {
@@ -69,11 +86,28 @@ html {
 }
 
 .menu_display {
+  position: relative;
   width: 92%;
   height: 100%;
   margin: 1.2rem;
   background-color: rgb(217, 40, 214);
   border: 2px solid rgb(217, 152, 67);
+}
+
+.menu_display a {
+  position: absolute;
+  padding: 28% 11%;
+  padding-bottom: 37.5%;
+  width: fit-content;
+  font-weight: 700;
+  font-size: 4rem;
+  background-color: rgb(149, 34, 34);
+  background-color: rgb(45, 230, 45);
+}
+
+.whatsapp {
+  text-decoration: none;
+  /* padding-top: 30%; */
 }
 
 /* &&&&&&&&&&&&&&&& */
@@ -376,10 +410,15 @@ html {
 }
 
 .myQuizes button {
-  background-color: rgb(97, 214, 76);
   height: 3.4rem;
   border-radius: 2rem;
   margin: 1rem 0;
+  background-color: rgb(219, 148, 55);
+}
+.myQuizes .select_btn {
+  background-color: rgb(39, 224, 6);
+  margin-left: 1.2rem;
+  transition: all 0.7s;
 }
 .btn_next {
   width: 5rem;

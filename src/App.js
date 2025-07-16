@@ -700,7 +700,7 @@ function Quizes({ balance, onSetbalance, onFinish }) {
                   key={index}
                   onClick={(e) => onSetbalance(e.target.value, opt.activation)}
                   value={opt.amount}
-                  className={`${balance === opt.amount ? "selected" : ""}`}
+                  className={`${balance === opt.amount ? "select_btn" : ""}`}
                 >
                   {opt.type}
                 </button>
@@ -710,6 +710,7 @@ function Quizes({ balance, onSetbalance, onFinish }) {
           <button
             onClick={onFinish}
             className="btn_next"
+            disabled={!balance}
             style={{
               backgroundColor: "rgb(11, 11, 45)",
               color: "white",

@@ -626,6 +626,7 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
 function Quizes({ balance, onSetbalance, onFinish }) {
   const [currentId, setCurrentId] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [nextactive, setnextacti] = useState(null);
   const [price, setprice] = useState(false);
 
   const selected = {
@@ -645,9 +646,11 @@ function Quizes({ balance, onSetbalance, onFinish }) {
   function handleCurrentID() {
     setCurrentId(currentId + 1);
     setSelectedIndex(null);
+    setnextacti(null);
   }
   function handleSelected(index) {
     setSelectedIndex(index);
+    setnextacti(1);
   }
 
   return (
@@ -677,7 +680,7 @@ function Quizes({ balance, onSetbalance, onFinish }) {
           <button
             onClick={handleCurrentID}
             className="btn_next"
-            disabled={!selectedIndex}
+            disabled={!nextactive}
             style={{
               backgroundColor: "rgb(11, 11, 45)",
               color: "white",

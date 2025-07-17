@@ -256,7 +256,7 @@ export default function Prom() {
             </div>
             <div className="promtext">
               <img src="/prom2.jpg" alt="pron" />
-              {!Kiswahili ? (
+              {Kiswahili ? (
                 <p>
                   The African Development Fund (ADF) contributes to the
                   promotion of economic and social development in least
@@ -277,10 +277,11 @@ export default function Prom() {
             </div>
             <div className="person">
               <>
+                <h4>Beneficiaries/ Waliyonufaika </h4>
                 {people.map((person, index) =>
                   person.id === currentperson ? (
                     <div>
-                      <h3>Beneficiaries/ Waliyonufaika </h3>
+                      <hr></hr>
                       <h3>{person.name}</h3>
                       <p>Age: {person.age} Years</p>
                       <p>From: {person.country}</p>
@@ -293,7 +294,7 @@ export default function Prom() {
               </>
             </div>
             <div className="wwhatsapp">
-              {Kiswahili ? (
+              {!Kiswahili ? (
                 <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
               ) : (
                 <p>Click the WhatsApp link below to apply now!</p>

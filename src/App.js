@@ -60,6 +60,72 @@ const moneyoption = [
   },
 ];
 
+const people = [
+  {
+    name: "bened",
+    age: 34,
+    country: "Congo",
+    message: "thanks so much, I received USD 500",
+    id: 1,
+  },
+  {
+    name: "ausjdj",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 2,
+  },
+  {
+    name: "klkks",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 3,
+  },
+  {
+    name: "poooas,",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 4,
+  },
+  {
+    name: "cl;,s",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 5,
+  },
+  {
+    name: "poiu",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 6,
+  },
+  {
+    name: "kkals",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 7,
+  },
+  {
+    name: "cnwl",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 8,
+  },
+  {
+    name: "vndk",
+    age: 49,
+    country: "Zambi",
+    message: "thanks so much, I received ZMW 25,000",
+    id: 9,
+  },
+];
+
 export default function Prom() {
   const [home, setHome] = useState(true);
   const [hometwo, setHometwo] = useState(false);
@@ -137,6 +203,23 @@ export default function Prom() {
     setKiswahili(Kiswahili === true ? false : true);
   }
 
+  const [currentperson, setcurrentperson] = useState(1);
+  const [blink, setBlink] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setcurrentperson((prevId) => (prevId + 1) % people.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval2 = setInterval(() => {
+      setBlink(blink === true ? false : true);
+    }, 2000);
+    return () => clearInterval(interval2);
+  }, [blink]);
   return (
     <div className="prom-container">
       <div>
@@ -188,6 +271,23 @@ export default function Prom() {
               )}
               <img src="/transac.jpg" alt="pron" />
             </div>
+            <div className="person">
+              <>
+                {people.map((person, index) =>
+                  person.id === currentperson ? (
+                    <div>
+                      <h3>Beneficiaries/ Waliyonufaika </h3>
+                      <h3>{person.name}</h3>
+                      <p>Age: {person.age}</p>
+                      <p>From: {person.country}</p>
+                      <p>{person.message}</p>
+                    </div>
+                  ) : (
+                    ""
+                  )
+                )}
+              </>
+            </div>
             <div className="wwhatsapp">
               <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
               <a
@@ -195,7 +295,13 @@ export default function Prom() {
                 className="whatsapp"
               >
                 {" "}
-                whatApp
+                {blink ? (
+                  <p style={{ backgroundColor: "inherit", color: "black" }}>
+                    whatApp
+                  </p>
+                ) : (
+                  <p style={{ backgroundColor: "inherit" }}>whatApp</p>
+                )}
               </a>
             </div>
             <button className="btn_apply" onClick={handleSetHome}>

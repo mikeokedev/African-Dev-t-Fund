@@ -18,7 +18,51 @@
   font-weight: 550;
   background-color: inherit;
 }
+.wellcome_text {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 14rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.wellcome_text p {
+  font-size: 1.9rem;
+}
+.wellcome_text button {
+  background-color: rgb(218, 155, 73);
+  font-size: 2.2rem;
+  border: none;
+  padding: 0.5 0.2rem;
+  border-radius: 4px;
+  width: fit-content;
+  margin: 0 auto;
+}
 
+.wwhatsapp {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgb(200, 140, 50); */
+  height: fit-content;
+}
+.wwhatsapp p {
+  background-color: whitesmoke;
+  font-size: 2rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+.wwhatsapp a {
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 3rem 18%;
+  padding-bottom: 5.6rem;
+  background-color: rgb(28, 238, 28);
+  color: rgb(22, 56, 24);
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+
+/* margin-left: 25rem; */
 .plofile_info {
   padding: 2rem;
   display: flex;

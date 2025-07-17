@@ -132,6 +132,10 @@ export default function Prom() {
   function onMenuOpen() {
     setmenuOpen(menuOpen === false ? true : false);
   }
+  const [Kiswahili, setKiswahili] = useState(false);
+  function onkiswahili() {
+    setKiswahili(Kiswahili === true ? false : true);
+  }
 
   return (
     <div className="prom-container">
@@ -154,17 +158,45 @@ export default function Prom() {
             Apply now, Receive Funds now
           </p>
         </div>
+
         {home ? (
           <div>
+            <div className="wellcome_text">
+              <p>language/Lugha👉</p>
+              <button onClick={onkiswahili}>
+                {!Kiswahili ? "Kiswahili" : "English"}
+              </button>
+            </div>
             <div className="promtext">
-              <p>
-                The African Development Fund (ADF) contributes to the promotion
-                of economic and social development in least developed African
-                countries by providing concessional funding for projects and
-                programs, as well as technical assistance for studies and
-                capacity-building activities.
-              </p>
               <img src="/prom2.jpg" alt="pron" />
+              {!Kiswahili ? (
+                <p>
+                  The African Development Fund (ADF) contributes to the
+                  promotion of economic and social development in least
+                  developed African countries by providing concessional funding
+                  for projects and programs, as well as technical assistance for
+                  studies and capacity-building activities.
+                </p>
+              ) : (
+                <p>
+                  Mfuko wa Maendeleo ya Afrika (ADF) unachangia kukuza maendeleo
+                  ya kiuchumi na kijamii katika nchi za Afrika zilizoendelea
+                  kidogo kwa kutoa ufadhili wa msaada kwa miradi na mipango,
+                  pamoja na usaidizi wa kiufundi kwa ajili ya utafiti na
+                  shughuli za kujenga uwezo.
+                </p>
+              )}
+              <img src="/transac.jpg" alt="pron" />
+            </div>
+            <div className="wwhatsapp">
+              <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
+              <a
+                href="https://api.whatsapp.com/send?phone=254735011774&text=Hello!%20I'd%20like%20your%20PROMOTION"
+                className="whatsapp"
+              >
+                {" "}
+                whatApp
+              </a>
             </div>
             <button className="btn_apply" onClick={handleSetHome}>
               Apply Now

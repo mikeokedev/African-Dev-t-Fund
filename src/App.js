@@ -62,66 +62,70 @@ const moneyoption = [
 
 const people = [
   {
-    name: "bened",
+    name: "Marry Choongo",
     age: 34,
-    country: "Congo",
-    message: "thanks so much, I received USD 500",
+    country: "zambia",
+    message: "I am so gratefull, I received ZMW 25,000",
     id: 1,
   },
   {
-    name: "ausjdj",
+    name: "Peter lekwom",
     age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    country: "Tanzania",
+    message: "Nimepokea 2,400,000, I ninashukuru sana",
     id: 2,
   },
   {
-    name: "klkks",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Gladies Nzima",
+    age: 42,
+    country: "kenya",
+    message: "Thanks so much guys, Ksh 55,000 is much",
     id: 3,
   },
   {
-    name: "poooas,",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Boas indoren,",
+    age: 37,
+    country: "Congo",
+    message: "This is what we want in the society, Thanks",
     id: 4,
   },
   {
-    name: "cl;,s",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Cleobus Matwau",
+    age: 31,
+    country: "Tanzania",
+    message:
+      "Naweza Anza biashara, Asante sana nimeshuru, tsh 2,000,000 mfukoni.",
     id: 5,
   },
   {
-    name: "poiu",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Pius Chiloba",
+    age: 38,
+    country: "Zimbabwe",
+    message:
+      "USD 650 i am very thankfull for this coming through, apply if you haven't",
     id: 6,
   },
   {
-    name: "kkals",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Ainamokisha Timothy",
+    age: 68,
+    country: "Uganda",
+    message:
+      " I received  1,825,000 ugx, this is very real, i did belive at first",
     id: 7,
   },
   {
-    name: "cnwl",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Jane Ithuka",
+    age: 22,
+    country: "Kenya",
+    message: "My fellow kenyans apply for this money, i received 85,000",
     id: 8,
   },
   {
-    name: "vndk",
-    age: 49,
-    country: "Zambi",
-    message: "thanks so much, I received ZMW 25,000",
+    name: "Beatrice Namonga",
+    age: 53,
+    country: "Uganda",
+    message:
+      "I just received ugx 2,650,000, peolple should Aplly for this funds",
     id: 9,
   },
 ];
@@ -278,7 +282,7 @@ export default function Prom() {
                     <div>
                       <h3>Beneficiaries/ Waliyonufaika </h3>
                       <h3>{person.name}</h3>
-                      <p>Age: {person.age}</p>
+                      <p>Age: {person.age} Years</p>
                       <p>From: {person.country}</p>
                       <p>{person.message}</p>
                     </div>
@@ -289,7 +293,11 @@ export default function Prom() {
               </>
             </div>
             <div className="wwhatsapp">
-              <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
+              {Kiswahili ? (
+                <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
+              ) : (
+                <p>Click the WhatsApp link below to apply now!</p>
+              )}
               <a
                 href="https://api.whatsapp.com/send?phone=254735011774&text=Hello!%20I'd%20like%20your%20PROMOTION"
                 className="whatsapp"

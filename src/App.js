@@ -275,14 +275,14 @@ export default function Prom() {
                   shughuli za kujenga uwezo.
                 </p>
               )}
-              {/* {transacImg ? (
+              {transacImg ? (
                 <>
                   hello
                   <img src="/transac.jpg" alt="pron" />
                 </>
               ) : (
                 <img src="/transac2.jpg" alt="pron" />
-              )} */}
+              )}
             </div>
             <div className="person">
               <>
@@ -302,11 +302,14 @@ export default function Prom() {
                 )}
               </>
             </div>
-            <div className="wwhatsapp">
+            <div className="wwhatsapp" style={{ backgroundColor: "inherit" }}>
               {!Kiswahili ? (
                 <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
               ) : (
-                <p>Click the link below to apply on the website now!</p>
+                <p>
+                  Click the link below to apply on the website now! or through
+                  WhatsApp
+                </p>
               )}
               <button
                 style={{ marginTop: "1rem" }}
@@ -315,9 +318,10 @@ export default function Prom() {
               >
                 Apply Now
               </button>
-              {/* <a
-                href="https://api.whatsapp.com/send?phone=254735011774&text=Hello!%20I'd%20like%20your%20PROMOTION"
+              <a
+                href="https://wa.me/message/HKUI4RPAQTKMH1"
                 className="whatsapp"
+                style={{ marginBottom: "2rem" }}
               >
                 {" "}
                 {blink ? (
@@ -327,7 +331,7 @@ export default function Prom() {
                 ) : (
                   <p style={{ backgroundColor: "inherit" }}>whatApp</p>
                 )}
-              </a> */}
+              </a>
             </div>
           </div>
         ) : (

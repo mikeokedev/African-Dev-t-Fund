@@ -251,15 +251,15 @@ export default function Prom() {
         {home ? (
           <div>
             <div className="wellcome_text">
-              <p>language/Lugha👉</p>
+              {/* <p>language/Lugha👉</p>
               <button onClick={onkiswahili}>
                 {!Kiswahili ? "Kiswahili" : "English"}
-              </button>
+              </button> */}
             </div>
             <div className="promtext">
               <img src="/prom2.jpg" alt="pron" />
               {Kiswahili ? (
-                <p>
+                <p style={{ margin: "1rem" }}>
                   The African Development Fund (ADF) contributes to the
                   promotion of economic and social development in least
                   developed African countries by providing concessional funding

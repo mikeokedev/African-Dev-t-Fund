@@ -5,6 +5,68 @@
   box-sizing: border-box;
 }
 
+/* *******
+ACCOUNT CENTER
+*********** */
+.account_container {
+  position: absolute;
+  top: 4.7rem;
+  width: 20rem;
+  height: 15rem;
+  height: fit-content;
+  right: 0;
+  background-color: whitesmoke;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.hideAccCenter {
+  right: -10%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.7s;
+}
+
+.accoption {
+  font-size: 2rem;
+  font-weight: bold;
+  padding-left: 5%;
+  padding-top: 1rem;
+  padding: 1rem;
+}
+.accoption button {
+  background-color: rgb(14, 9, 2);
+}
+
+.myAccoOPt h2 {
+  text-align: center;
+  display: flex;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-left: 20%;
+  /* font-size: 2rem; */
+}
+
+.myAccoOPt button {
+  text-align: center;
+  display: flex;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-left: 20%;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  color: red;
+}
+
+.myAccoOPt span {
+  font-size: 3rem;
+  color: rgb(0, 255, 21);
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+  margin-left: 40%;
+}
+
 .menu {
   display: flex;
   flex-direction: column;
@@ -385,7 +447,7 @@ html {
   background-color: rgb(231, 212, 188);
   background-color: rgb(215, 237, 247);
   border: 2px solid rgba(0, 0, 0, 0);
-  height: 10rem;
+  height: fit-content;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .Userin {
@@ -397,15 +459,14 @@ html {
 .prom_logo2 {
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
   width: 20rem;
-  height: 10rem;
-  /* border-radius: 50%; */
-  /* height: 55%; */
+  height: 12rem;
 }
 
 .custoprof {
   /* display: flex; */
   align-items: center;
   width: 18rem;
+  height: fit-content;
 }
 
 .blackk {

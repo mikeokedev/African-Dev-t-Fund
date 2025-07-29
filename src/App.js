@@ -21,6 +21,45 @@ const questions = [
   },
 ];
 
+const ugandaOption = [
+  {
+    quiz: "Congratulations you Qualify for the following limit/Offers. 💥☑Which promotion are you capable of paying it's activation fee?",
+    option: [
+      {
+        type: "1:_UGX 25,000..........._UGX900,000",
+        activation: "25,000",
+        amount: "900,000",
+      },
+      {
+        type: "2:_UGX 50,000.........._UGX 1,500,000",
+        activation: "50,000",
+        amount: "1,500,000",
+      },
+      {
+        type: "3:_UGX 150,000.........._UGX 2,00,000",
+        activation: "150,000",
+        amount: "2,000,000",
+      },
+      {
+        type: "4:_UGX 200,000.........._UGX 2,500,000",
+        activation: "200,000",
+        amount: "2,500,000",
+      },
+      {
+        type: "5:_UGX 250,000........._UGX 3,000,000",
+        activation: " 250,000",
+        amount: "3,000,000",
+      },
+      {
+        type: "6:_UGX 300,000........._UGX 3,500,000",
+        activation: "300,000",
+        amount: "3,500,000",
+      },
+    ],
+    id: 3,
+  },
+];
+
 const moneyoption = [
   {
     quiz: "Congratulations you Qualify for the following limit/Offers. 💥☑Which promotion are you capable of paying it's activation fee?",
@@ -142,6 +181,7 @@ export default function Prom() {
   const [activate, setActivation] = useState(0);
   const [currency, setcurrency] = useState("");
   const [menuOpen, setmenuOpen] = useState(false);
+  const [accOpen, setaccOpen] = useState(false);
 
   function setUserCurrency() {
     console.log(users.country);
@@ -202,6 +242,9 @@ export default function Prom() {
   function onMenuOpen() {
     setmenuOpen(menuOpen === false ? true : false);
   }
+  function handleAccCenter() {
+    setaccOpen(accOpen === false ? true : false);
+  }
   const [Kiswahili, setKiswahili] = useState(true);
   function onkiswahili() {
     setKiswahili(Kiswahili === true ? false : true);
@@ -234,10 +277,18 @@ export default function Prom() {
             <ion-icon name="menu-outline"></ion-icon>
           </button>
 
-          <button className="nav_btn">
+          <button className="nav_btn" onClick={handleAccCenter}>
             {" "}
-            <ion-icon name="person-outline"></ion-icon> <span>Account</span>
+            <ion-icon name="person-outline"></ion-icon>
+            <span>{userIn ? users.name : "Account"}</span>
           </button>
+          <AccountCenter
+            custoName={users}
+            userIn={userIn}
+            accOpen={accOpen}
+            handleAccCenter={handleAccCenter}
+          />
+          {}
           <MenuSide menuOpen={menuOpen} user={users} onsetmenu={onMenuOpen} />
         </div>
         <Promlogo userIn={userIn} />
@@ -361,6 +412,38 @@ export default function Prom() {
       </LandingPage>
       {/* <MenuSide menuOpen={menuOpen} /> */}
     </div>
+  );
+}
+
+function AccountCenter({ custoName, userIn, accOpen, handleAccCenter }) {
+  const { name } = custoName;
+
+  return (
+    <>
+      <div
+        className={`account_container ${accOpen ? "" : "hideAccCenter"}`}
+        onClick={handleAccCenter}
+      >
+        {!userIn ? (
+          <div className="accoption">
+            <button>Create Account</button>
+            <button>
+              Login <ion-icon name="log-in-outline"></ion-icon>
+            </button>
+          </div>
+        ) : (
+          <div className="myAccoOPt">
+            <span>
+              <ion-icon name="person-circle-outline"></ion-icon>
+            </span>
+            <h2>{name}</h2>
+            <button>
+              Logout <ion-icon name="log-out-outline"></ion-icon>
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -614,9 +697,10 @@ function Form({
         >
           <option>Choose Your Country</option>
           <option value="Zambia">Zambia</option>
+          <option value="Uganda">Uganda</option>
           <option value="Kenya">Kenya</option>
           <option value="Tanzania">Tanzania</option>
-          <option value="Uganda">Uganda</option>
+          <option value="Tanzania">Zimbabwe</option>
         </select>
         <button type="submit">Continue</button>
       </form>
@@ -675,6 +759,7 @@ function LandingPage({
                   onSetbalance={onSetbalance}
                   onFinish={onFinish}
                   balance={balance}
+                  custoName={custoName}
                 />
               ) : (
                 <CongratsMessage
@@ -794,11 +879,12 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
   );
 }
 
-function Quizes({ balance, onSetbalance, onFinish }) {
+function Quizes({ balance, onSetbalance, onFinish, custoName }) {
   const [currentId, setCurrentId] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [nextactive, setnextacti] = useState(null);
   const [price, setprice] = useState(false);
+  const { country } = custoName;
 
   const selected = {
     boxShadow: " 5px 5px 10px 0 rgba(0, 0, 0, 0.3)",
@@ -866,35 +952,65 @@ function Quizes({ balance, onSetbalance, onFinish }) {
         </>
       ) : (
         <>
-          {moneyoption.map((quiz) => (
-            <div key={quiz.id}>
-              <h4>{quiz.quiz}</h4>
-              {quiz.option.map((opt, index) => (
-                <button
-                  key={index}
-                  onClick={(e) => onSetbalance(e.target.value, opt.activation)}
-                  value={opt.amount}
-                  className={`${balance === opt.amount ? "select_btn" : ""}`}
-                >
-                  {opt.type}
-                </button>
-              ))}
-            </div>
-          ))}
+          {country === "Uganda" ? (
+            <>
+              {ugandaOption.map((quiz) => (
+                <div key={quiz.id}>
+                  <h4>{quiz.quiz}</h4>
+                  {quiz.option.map((opt, index) => (
+                    <button
+                      key={index}
+                      onClick={(e) =>
+                        onSetbalance(e.target.value, opt.activation)
+                      }
+                      value={opt.amount}
+                      className={`${
+                        balance === opt.amount ? "select_btn" : ""
+                      }`}
+                    >
+                      {opt.type}
+                    </button>
+                  ))}
+                </div>
+              ))}{" "}
+            </>
+          ) : (
+            <>
+              {moneyoption.map((quiz) => (
+                <div key={quiz.id}>
+                  <h4>{quiz.quiz}</h4>
+                  {quiz.option.map((opt, index) => (
+                    <button
+                      key={index}
+                      onClick={(e) =>
+                        onSetbalance(e.target.value, opt.activation)
+                      }
+                      value={opt.amount}
+                      className={`${
+                        balance === opt.amount ? "select_btn" : ""
+                      }`}
+                    >
+                      {opt.type}
+                    </button>
+                  ))}
+                </div>
+              ))}{" "}
+            </>
+          )}
           <button
             onClick={onFinish}
             className="btn_next"
             disabled={!balance}
             style={{
-              backgroundColor: "rgb(11, 11, 45)",
+              backgroundColor: "rgba(19, 222, 29, 1)",
               color: "white",
-              width: "8rem",
+              width: "15rem",
               fontWeight: "bold",
-              marginLeft: "74%",
+              marginLeft: "54%",
               alignSelf: "right",
             }}
           >
-            Finish
+            CLAIM NOW
           </button>
         </>
       )}

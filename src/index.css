@@ -334,6 +334,8 @@ html {
   height: fit-content;
   background-color: rgb(243, 235, 224);
   margin: 0 auto;
+  margin-left: 2rem;
+  /* padding-left: 2.2rem; */
 }
 
 .top_nav {
@@ -459,7 +461,7 @@ html {
 .prom_logo2 {
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
   width: 20rem;
-  height: 12rem;
+  height: 9.8rem;
 }
 
 .custoprof {

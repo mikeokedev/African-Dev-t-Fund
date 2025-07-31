@@ -369,7 +369,7 @@ export default function Prom() {
               >
                 Apply Now
               </button>
-              {/* <a
+              <a
                 href="https://wa.me/message/HKUI4RPAQTKMH1"
                 className="whatsapp"
                 style={{ marginBottom: "2rem" }}
@@ -381,7 +381,7 @@ export default function Prom() {
                 ) : (
                   <p style={{ backgroundColor: "inherit" }}>whatApp</p>
                 )}
-              </a> */}
+              </a>
             </div>
           </div>
         ) : (
